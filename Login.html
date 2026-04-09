@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login S3 Test - Laranja & Preto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .login-container {
+            background-color: #262626;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 400px;
+            border-top: 5px solid #ff6600;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ff6600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            background: #333;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: white;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #ff6600;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #e65c00;
+            transform: translateY(-2px);
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Acesso S3</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" placeholder="Digite seu usuário" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit">ENTRAR</button>
+        </form>
+        <div id="message"></div>
+        <p class="footer-text">Hospedado estaticamente no Amazon S3</p>
+    </div>
+
+   <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const userEntry = document.getElementById('username').value;
+            const passEntry = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+
+            // Credenciais
+            const validUser = "jefferson";
+            const validPass = "jeff1234";
+
+            if (userEntry === validUser && passEntry === validPass) {
+                // SUCESSO: Redireciona para a próxima página
+                // Substitua 'PAGINA_AQUI.html' pelo nome do seu arquivo no S3
+                window.location.href = "page1.html"; 
+            } else {
+                // ERRO
+                messageDiv.style.color = "#ff3333";
+                messageDiv.innerHTML = "Usuário ou senha incorretos.";
+            }
+        });
+    </script>
+
+</body>
+</html>
